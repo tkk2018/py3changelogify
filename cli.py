@@ -12,8 +12,8 @@ if __name__ == "__main__":
         description="Generate a changelog between two Git commits (uses Conventional Commits format)",
         epilog=
         "Examples:\n" +
-        "  changelog.py -v 1.2.0 -s abc123 -e def456\n" +
-        "  changelog.py --version 1.2.0 --start abc123 --end def456 --date 2025-08-08 --filename CHANGELOG.md\n",
+        "  cli.py -v 1.2.0 -s abc123 -e def456\n" +
+        "  cli.py --version 1.2.0 --start abc123 --end def456 --date 2025-08-08 --filename CHANGELOG.md\n",
         formatter_class=argparse.RawTextHelpFormatter
     )
     arg_parser.add_argument("-v", "--version", required=True, help="Release version (e.g., 1.0.0)")
