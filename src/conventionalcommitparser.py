@@ -11,7 +11,7 @@ class ConventionalCommitParser:
         # type: (Optional[Dict[str, str]]) -> ConventionalCommitParser
         self.types = types
         self.conventional_commit_message_pattern = re.compile(r"^(\w+)(?:\(([^)]+)\))?(!)?:\s+(.+)")
-        self.breaking_change_footer_pattern = re.compile(r"BREAKING-CHANGE:\s*(.+)", re.IGNORECASE)
+        self.breaking_change_footer_pattern = re.compile(r"BREAKING[- ]CHANGE:\s*(.+)", re.IGNORECASE)
 
     def parses(self, commits, cb):
         # type: (list[GitLogCommit], Callable[[ConventionalCommitMessage], None]) -> None
