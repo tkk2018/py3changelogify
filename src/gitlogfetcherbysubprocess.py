@@ -12,7 +12,7 @@ class GitLogFetcherBySubprocess(GitLogFetcher):
     def fetch(self):
         # type: () -> list[GitLogCommit]
         cmd = [
-            "git", "log", self.start_hash + ".." + self.end_hash,
+            "git", "log", self.start_hash + "^.." + self.end_hash,
             "--pretty=format:%h|%s",
             # "--pretty=format:%h|%B", # TODO: parse footer
             "--no-merges"
