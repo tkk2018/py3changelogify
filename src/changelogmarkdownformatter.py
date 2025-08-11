@@ -17,11 +17,14 @@ class ChangelogMarkdownFormatter:
           if key in commits:
               output_lines.append("### {}\n".format(self.types[key]))
               for commit in commits[key]:
-                  if commit.scope:
-                      message = "- **{}**: {} (#{})".format(commit.scope, commit.subject, commit.hash)
-                  else:
-                      message = "- {} (#{})".format(commit.subject, commit.hash)
+                  message = "- "
+                  if commit.is_breaking_change:
+                      message = message + "! "
 
+                  if commit.scope:
+                      message = message + "**{}**: {} (#{})".format(commit.scope, commit.subject, commit.hash)
+                  else:
+                      message = message + "{} (#{})".format(commit.subject, commit.hash)
                   output_lines.append(message)
               output_lines.append("")  # Extra newline after section
 
