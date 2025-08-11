@@ -41,12 +41,14 @@ if __name__ == "__main__":
 
     latest_changelog = ChangelogMarkdownFormatter().format(release_version, release_date, grouped)
 
-    if os.path.exists(changelog_filename):
-        with open(changelog_filename, "r") as old_f:
+    changelog_path = os.path.join(cwd, changelog_filename) if cwd else changelog_filename
+
+    if os.path.exists(changelog_path):
+        with open(changelog_path, "r") as old_f:
             existing = old_f.read()
-        with open(changelog_filename, "w") as f:
+        with open(changelog_path, "w") as f:
             f.write(latest_changelog + "\n" + existing.lstrip())
     else:
-        with open(changelog_filename, "w") as f:
+        with open(changelog_path, "w") as f:
             f.write("# Changelog\n\n")
             f.write(latest_changelog)
