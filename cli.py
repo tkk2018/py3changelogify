@@ -44,11 +44,11 @@ if __name__ == "__main__":
     changelog_path = os.path.join(cwd, changelog_filename) if cwd else changelog_filename
 
     if os.path.exists(changelog_path):
-        with open(changelog_path, "r") as old_f:
+        with open(changelog_path, "r", encoding="utf-8") as old_f:
             existing = old_f.read()
-        with open(changelog_path, "w") as f:
+        with open(changelog_path, "w", encoding="utf-8") as f:
             f.write(latest_changelog + "\n" + existing.lstrip())
     else:
-        with open(changelog_path, "w") as f:
+        with open(changelog_path, "w", encoding="utf-8") as f:
             f.write("# Changelog\n\n")
             f.write(latest_changelog)
